@@ -112,8 +112,8 @@
 			}
 		}
 	* assign row and column names
-		matname `M' `rnames' , rows(1..`newrows') explicit
-		matname `M' `cnames' , columns(1..`newcols') explicit
+		matname `M'_matil `rnames' , rows(1..`newrows') explicit
+		matname `M'_matil `cnames' , columns(1..`newcols') explicit
 	* transpose again if cols to rows
 		if "`direction'"=="c2r" {
 			mat `M'=`M''
