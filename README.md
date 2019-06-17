@@ -6,7 +6,7 @@ This program re-arranges columns and rows in a matrix in such a way that either:
 1. Rows are interlaced into colums: Formerly stacked cells appear beside each other.
 2. Columns are interlaced into rows: Cells formerly beside each other appear stacked.
 
-The interlacing is done for a specified panel width/height and thus repeated for the number of panels in the matrix. This is useful, for example, to re-arrange statistics.
+The interlacing is done for a specified panel width/height and thus repeated for the number of panels in the matrix. You can specify the number of rows/columns to be interlaced. This is useful, for example, to re-arrange statistics.
 
 Consider the following 6x2 matrix _A_
 
