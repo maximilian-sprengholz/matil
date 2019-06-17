@@ -1,0 +1,9 @@
+v 3
+d {cf: matil} : Interlace rows in cols or cols in rows in matrices
+d Maximilian Sprengholz, Humboldt Universität zu Berlin
+d
+d Distribution-Date: 20190614
+d
+d Support: email maximilian.sprengholz@hu-berlin.de
+f matil.ado
+f matil.sthlp
