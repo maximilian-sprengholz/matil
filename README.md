@@ -25,7 +25,7 @@ right of the beta values instead of being printed in the row below.
 Using the command...
 
 ```Stata
-matil, d(r2c) sp(1)
+matil A, d(r2c) sp(1)
 ```
 ...would produce the desired result stored under _A\_matil_ (3x4)
 
