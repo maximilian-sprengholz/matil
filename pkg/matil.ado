@@ -130,11 +130,7 @@
 		forvalues n=1/`newrows' {
 			local rownames "`rownames' Panel`n'"
 		}
-		dis "`rnames'"
-		dis "`cnames'"
-		dis "`rownames'"
-		dis "`colnames'"
-		mat list `M'_matil
+	* assign labels
 		matname `M'_matil `rownames' , rows(1..`newrows') explicit
 		matname `M'_matil `colnames' , columns(1..`newcols') explicit
 	*** transpose again if cols to rows
