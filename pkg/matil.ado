@@ -47,6 +47,9 @@
 		if "`direction'"=="c2r" {
 			mat `M'=`M''
 		}
+	* save names
+		local rnames : rownames `M'
+		local cnames : colnames `M'
 	*	parameters
 		local cols=colsof(`M')
 		local rows=rowsof(`M')
@@ -108,10 +111,15 @@
 				}
 			}
 		}
+	* assign row and column names
+		matname `M' `rnames' , rows(1/`newrows') explicit
+		matname `M' `cnames' , columns(1/`newcols') explicit
+	* transpose again if cols to rows
 		if "`direction'"=="c2r" {
 			mat `M'=`M''
 			mat `M'_matil=`M'_matil'
 		}
+	*	show result
 		dis as result "Old matrix:"
 		mat list `M'
 		dis as result ///
