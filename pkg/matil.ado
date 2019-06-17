@@ -40,10 +40,11 @@
 			}
 		}
 
-	*** Interlace
-	*	transpose if cols in rows requested:
-	*	interlacing is always rows in cols, transposing before and after
-	*	changes direction
+	*** INTERLACE
+	***	transpose if cols in rows requested:
+	***	interlacing is always rows in cols, transposing before and after
+
+	*	check direction
 		if "`direction'"=="c2r" {
 			mat `M'=`M''
 		}
@@ -111,15 +112,37 @@
 				}
 			}
 		}
-	* assign row and column names
-		matname `M'_matil `rnames' , rows(1..`newrows') explicit
-		matname `M'_matil `cnames' , columns(1..`newcols') explicit
-	* transpose again if cols to rows
+	***	assign row and column names
+		local newrows = `rows'-`ilcellcnt'
+		local newcols = `cols'*`multi'
+	*	add missing titles for transposed rows/cols
+		local rnameno : word count `rnames'
+		while `rnameno' < `newcols' {
+			local rnames "`rnames' `rnames'"
+			local rnameno : word count `rnames'
+		}
+	*	trim to correct number
+		forvalues n=1/`newcols' {
+			local rname : word `n' of `rnames'
+			local colnames "`colnames' `rname'"
+		}
+	*	add panel no as new label
+		forvalues n=1/`newrows' {
+			local rownames "`rownames' Panel`n'"
+		}
+		dis "`rnames'"
+		dis "`cnames'"
+		dis "`rownames'"
+		dis "`colnames'"
+		mat list `M'_matil
+		matname `M'_matil `rownames' , rows(1..`newrows') explicit
+		matname `M'_matil `colnames' , columns(1..`newcols') explicit
+	*** transpose again if cols to rows
 		if "`direction'"=="c2r" {
 			mat `M'=`M''
 			mat `M'_matil=`M'_matil'
 		}
-	*	show result
+	***	show result
 		dis as result "Old matrix:"
 		mat list `M'
 		dis as result ///
