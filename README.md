@@ -10,14 +10,14 @@ The interlacing is done for a specified panel width/height and thus repeated for
 
 Consider the following 6x2 matrix _A_
 
-|     | Model 1 | Model 2 |
-| --- | ------- | ------- |
-| __b__   | 0.111   | 0.444   |
-| __se__  | 0.011   | 0.044   |
-| __b__   | 0.222   | 0.555   |
-| __se__  | 0.022   | 0.055   |
-| __b__   | 0.333   | 0.666   |
-| __se__  | 0.033   | 0.066   |
+|        | Model 1 | Model 2 |
+| ------ | ------- | ------- |
+| __b__  | 0.111   | 0.444   |
+| __se__ | 0.011   | 0.044   |
+| __b__  | 0.222   | 0.555   |
+| __se__ | 0.022   | 0.055   |
+| __b__  | 0.333   | 0.666   |
+| __se__ | 0.033   | 0.066   |
 
 You want to interlace the standard errors from rows into columns, so that they are printed in the column
 right of the beta values instead of being printed in the row below.
@@ -29,14 +29,14 @@ matil A, d(r2c) sp(1)
 ```
 ...would produce the desired result stored under _A\_matil_ (3x4)
 
-| Model 1 |        | Model 2 |        |
-| ------- | ------ | ------- | ------ |
-| __b__   | __se__ | __b__   | __se__ |
-| 0.111   | 0.011  | 0.444   | 0.044  |
-| 0.222   | 0.022  | 0.555   | 0.055  |
-| 0.333   | 0.033  | 0.666   | 0.066  |
+|        | Model 1 |        | Model 2 |        |
+| ------ | ------- | ------ | ------- | ------ |
+|        | __b__   | __se__ | __b__   | __se__ |
+| __Panel1__ | 0.111   | 0.011  | 0.444   | 0.044  |
+| __Panel2__ | 0.222   | 0.022  | 0.555   | 0.055  |
+| __Panel3__ | 0.333   | 0.033  | 0.666   | 0.066  |
 
-However, please note that the row and column labels get mixed up too. The labels in this example are for illustrative purposes only.
+Please note that the 'Model' labels are for illustrative purposes only and do not appear as labels in the matrix. The 'Panel' labels, however, are added automatically.
 
 ## Installation
 ```Stata
